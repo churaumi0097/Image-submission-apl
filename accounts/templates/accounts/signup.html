@@ -1,0 +1,26 @@
+{% extends "home.html" %}
+{% load widget_tweaks %}
+{% block content %}
+<h4 class="fw-light text-center my-5"><strong>サインアップ</strong></h4>
+<form method="post" class="form-auth">
+    {% csrf_token %}
+    <div class="form-label-group mx-5 mt-5">
+        ユーザー名：{% render_field form.username class="form-control border-dark" placeholder="username" %}
+        <p style="color:rgb(145, 146, 147) ;">既に登録されているユーザ名は登録できません。</p>
+    </div>
+    <div class="form-label-group mx-5 my-3">
+        メールアドレス：{% render_field form.email class="form-control border-dark" placeholder="email" %}
+        <p style="color: rgb(145, 146, 147);">このフィールドは必須ではありません。</p>
+    </div>
+    <div class="form-label-group mx-5 my-3">
+        パスワード：{% render_field form.password1 class="form-control border-dark" placeholder="password" %}
+        <p style="color: rgb(145, 146, 147);">パスワードは８文字以上で、予測されやすいパスワードや、数字のみのパスワードは登録できません。</p>
+    </div>
+    <div class="form-label-group mx-5 my-3">
+        パスワード(確認用)：{% render_field form.password2 class="form-control border-dark" placeholder="password(confirm)" %}
+    </div>
+    <div class="text-center">
+        <input class="btn btn-primary" type="submit" value="登録">
+    </div>
+</form>
+{% endblock %}

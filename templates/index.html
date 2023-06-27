@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% load static %}
+{% block main %}
+{% include "_header.html" %}
+
+<div class="album py-3" style="background-color: white;">
+    <div class="container">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for item in item_list %}
+        {% if user.get_username == item.user %}
+        <div class="col">
+          <div class="card shadow-sm">
+            <a href="{% url 'detail' item.id %}">
+              <img class="bd-placeholder-img card-img-top" src="{{ item.image.url }}"  width="100%" height="225" >
+            </a>
+            <div class="card-body">
+              <p class="card-text">{{ item.title }}</p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url "update" item.id %}'">変更</button>
+                  <button type="button" class="btn btn-sm btn-outline-secondary" onclick="location.href='{% url "delete" item.id %}'">削除</button>
+                </div>
+                <small class="text-muted">{{ item.time }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endif %}
+     {% endfor %}
+    </div>
+ </div>
+</div>
+{% endblock %}
+

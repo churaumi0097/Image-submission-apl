@@ -1,0 +1,24 @@
+{% extends "home.html" %}
+{% load widget_tweaks %}
+{% block content %}
+
+<h3 class="fw-light text-center mt-5"><strong>ログイン</strong></h4>
+<form method="post" class="form-auth">
+    {% csrf_token %}
+    {% for error in form.non_field_errors %}
+    <p class="text-center">{{ error }}</p>
+    {% endfor %}
+    <div class="form-label-group mx-5 mt-5">
+        ユーザー名：{% render_field form.login class="form-control border-dark" placeholder="username" %}
+    </div>
+    <div class="form-label-group mx-5 my-3">
+        パスワード：{% render_field form.password class="form-control border-dark" placeholder="password" %}
+    </div>
+    <div class="mx-5 my-4">
+        <a href="{% url 'account_signup' %}">新規登録する方はこちらから
+    </div>
+    <div class="text-center">
+        <button class="btn btn-primary">ログイン</button>
+    </div>
+</form>
+{% endblock %}

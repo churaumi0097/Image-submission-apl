@@ -1,0 +1,20 @@
+{% extends "_edit_navbar.html" %}
+{% block main %}
+  <div class="col">
+    <img src="{{ item.image.url }}" class="rounded mt-3 ms-3" style="max-width: 600px;
+    max-height: 600px; 
+    display:inlineblock;"> 
+    <div class="ms-5" style="display: inline-block; vertical-align: top;">
+      <h4 class="fw-light">
+        <strong>
+          <h6 class="tw-light mt-5">タイトル</h6><p class="border-bottom border-2 mb-4 ms-4" style="white-space: pre;">{{ item.title }}</p>
+          <h6 class="tw-light mt-3">内容</h6><p class="border-bottom border-2 mb-4 ms-4" style="white-space: pre;">{{ item.content }}</p>
+          <h6 class="tw-light mt-3">日付</h6><p class="border-bottom border-2 mb-4 ms-4" style="white-space: pre;">{{ item.time }}</p>
+        </strong>
+        </h4>
+      <div style="margin: 5rem; font-size: 18px;">    
+        <a class="ms-3 me-1" href="{% url 'update' item.id %}">内容の変更</a><strong class="tw-light">/</strong><a class="ms-1" href="{% url 'delete' item.id %}">投稿の削除</a>
+      </div>
+      </div>
+  </div>
+{% endblock %}
